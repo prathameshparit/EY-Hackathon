@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Details</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+            color: #333;
+        }
+
+        .container {
+            max-width: 1300px;
+            margin: 50px auto;
+            overflow: hidden;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding-bottom: 4rem;
+        }
+
+        .container:hover {
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+            background-color: #f9f9f9;
+        }
+
+        .image-container {
+            float: left;
+            width: 40%;
+            padding: 20px;
+        }
+
+        .image-container img {
+            width: 500px;
+            /* height: 300px; */
+            height: auto;
+            display: block;
+            border-radius: 8px;
+        }
+
+        .text-container {
+            float: right;
+            width: 50%;
+            padding: 20px;
+        }
+
+        .order-details {
+            font-size: 18px;
+            /* line-height: 1.6; */
+            color: #333;
+        }
+
+        h2 {
+            color: #0066cc;
+        }
+
+        h3 {
+            color: #333;
+            /* text-align: center; */
+        }
+
+        .timestamp {
+            font-style: italic;
+            color: #666;
+        }
+
+        .status-dropdown {
+            margin-top: 20px;
+        }
+
+        select {
+            width: 100%;
+            padding: 8px;
+            font-size: 16px;
+        }
+
+        /* select:hover {
+            color: #2980b9;
+        } */
+
+        .info {
+            display: flex;
+            column-gap: 1rem;
+            height: 2.2rem;
+        }
+
+        .right-text {
+            padding-top: 6px;
+        }
+
+        .image-container img {
+            width: 520px;
+            height: 400px;
+            object-fit: cover;
+        }
+
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="image-container">
+            <img src="{{ product.product_image }}" alt="Product Image">
+            <p></p>
+            <h3>Logistic Status:</h3>
+                <div class="status-dropdown">
+                    <select>
+                        <option value="order-placed">Order Placed</option>
+                        <option value="inventory-checked">Inventory Checked</option>
+                        <option value="packing">Packing</option>
+                        <option value="shipped">Shipped</option>
+                        <option value="out-for-delivery">Out for Delivery</option>
+                        <option value="delivered">Delivered</option>
+                    </select>
+                </div>
+        </div>
+        <div class="text-container">
+            <h2>Order {{ product.id }}</h2>
+            <div class="order-details">
+                <div class="info">
+                    <h4 class="left-text">Product Name:</h4>
+                    <p class="right-text" class="right-text">{{ product.product_name }}</p>
+                </div>
+
+                <div class="info">
+                    <h4 class="left-text">Customer Name:</h4>
+                    <p class="right-text">{{ product.customer_name }}</p>
+                </div>
+
+                <div class="info">
+                    <h4 class="left-text">Price:</h4>
+                    <p class="right-text">{{ product.price }} Rs</p>
+                </div>
+
+                <div class="info">
+                    <h4 class="left-text">Quantity:</h4>
+                    <p class="right-text">{{ product.quantity }}</p>
+                </div>
+
+                <div class="info">
+                    <h4 class="left-text">Category:</h4>
+                    <p class="right-text">{{ product.category }}</p>
+                </div>
+
+                <div class="info">
+                    <h4 class="left-text">Timestamp:</h4>
+                    <p class="right-text" class="timestamp">{{ product.timestamp }}</p>
+                </div>
+
+                <div class="info">
+                    <h4 class="left-text">Address:</h4>
+                    <p class="right-text">{{ product.address }}</p>
+                </div>
+
+                <div class="info">
+                    <h4 class="left-text">Phone:</h4>
+                    <p class="right-text">{{ product.phone }}</p>
+                </div>
+
+                <div class="info">
+                    <h4 class="left-text">Email:</h4>
+                    <p class="right-text">{{ product.email }}</p>
+                </div>
+
+                <div class="info">
+                    <h4 class="left-text">Payment Method:</h4>
+                    <p class="right-text">{{ product.payment }}</p>
+                </div>
+                
+                <div class="info">
+                    <h4 class="left-text">Product Description:</h4>
+                    <p class="right-text">{{ product.product_description }}</p>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

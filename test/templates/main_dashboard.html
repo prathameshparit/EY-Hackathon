@@ -1,0 +1,802 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+    <meta charset="UTF-8">
+    
+  
+      <link rel="apple-touch-icon" type="image/png" href="https://cpwebassets.codepen.io/assets/favicon/apple-touch-icon-5ae1a0698dcc2402e9712f7d01ed509a57814f994c660df9f7a952f3060705ee.png">
+  
+      <meta name="apple-mobile-web-app-title" content="CodePen">
+  
+      <link rel="shortcut icon" type="image/x-icon" href="https://cpwebassets.codepen.io/assets/favicon/favicon-aec34940fbc1a6e787974dcd360f2c6b63348d4b1f4e06c77743096d55480f33.ico">
+  
+      <link rel="mask-icon" type="image/x-icon" href="https://cpwebassets.codepen.io/assets/favicon/logo-pin-b4b4269c16397ad2f0f7a01bcdf513a1994f4c94b8af2f191c09eb0d601762b1.svg" color="#111">
+  
+      <link href="https://cdn.jsdelivr.net/npm/apexcharts@latest/dist/apexcharts.css" rel="stylesheet">
+
+      <!-- External Libraries -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.anychart.com/releases/8.11.0/js/anychart-core.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/8.11.0/js/anychart-treemap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+    <script src="http://d3js.org/d3.v3.min.js"></script>
+    <script src="http://d3js.org/topojson.v1.min.js"></script>
+    <script src="https://rawgit.com/Anujarya300/bubble_maps/master/data/geography-data/datamaps.none.js"></script>
+
+    <!-- Styles -->
+    <style type="text/css">
+        .container-fluid {
+            padding: 20px;
+            font-family: Arial, sans-serif;
+        }
+
+        #treemap {
+            width: 100%;
+            height: 600px;
+        }
+    </style>
+
+  
+    
+    
+  
+    <title>CodePen - A Pen by Md Hedayet Ullah</title>
+  
+      <link rel="canonical" href="https://codepen.io/Md-Hedayet-Ullah/pen/OJqJWqo">
+    
+    
+    
+    
+  <style>
+  /* Webpixels CSS */
+  /* Utility and component-centric Design System based on Bootstrap for fast, responsive UI development */
+  /* URL: https://github.com/webpixels/css */
+  
+  @import url(https://unpkg.com/@webpixels/css@1.1.5/dist/index.css);
+  
+  /* Bootstrap Icons */
+  @import url("https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.4.0/font/bootstrap-icons.min.css");
+  </style>
+  
+    <script>
+    window.console = window.console || function(t) {};
+    
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+    
+    
+  </head>
+  
+  <body translate="no" class="vsc-initialized">
+  
+  <!-- Dashboard -->
+  <div class="d-flex flex-column flex-lg-row h-lg-full bg-surface-secondary">
+      <!-- Vertical Navbar -->
+      <nav class="navbar show navbar-vertical h-lg-screen navbar-expand-lg px-0 py-3 navbar-light bg-white border-bottom border-bottom-lg-0 border-end-lg" id="navbarVertical">
+          <div class="container-fluid">
+              <!-- Toggler -->
+              <button class="navbar-toggler ms-n2" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarCollapse" aria-controls="sidebarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon"></span>
+              </button>
+              <!-- Brand -->
+              <a class="navbar-brand py-lg-2 mb-lg-5 px-lg-6 me-0" href="#">
+                  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/34/EY_logo_2019.svg/1200px-EY_logo_2019.svg.png" alt="...">
+              </a>
+              <!-- User menu (mobile) -->
+              <div class="navbar-user d-lg-none">
+                  <!-- Dropdown -->
+                  <div class="dropdown">
+                      <!-- Toggle -->
+                      <a href="#" id="sidebarAvatar" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          <div class="avatar-parent-child">
+                              <img alt="Image Placeholder" src="https://images.unsplash.com/photo-1548142813-c348350df52b?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=facearea&amp;facepad=3&amp;w=256&amp;h=256&amp;q=80" class="avatar avatar- rounded-circle">
+                              <span class="avatar-child avatar-badge bg-success"></span>
+                          </div>
+                      </a>
+                      <!-- Menu -->
+                      <div class="dropdown-menu dropdown-menu-end" aria-labelledby="sidebarAvatar">
+                          <a href="#" class="dropdown-item">Profile</a>
+                          <a href="#" class="dropdown-item">Settings</a>
+                          <a href="#" class="dropdown-item">Billing</a>
+                          <hr class="dropdown-divider">
+                          <a href="#" class="dropdown-item">Logout</a>
+                      </div>
+                  </div>
+              </div>
+              <!-- Collapse -->
+              <div class="collapse navbar-collapse" id="sidebarCollapse">
+                  <!-- Navigation -->
+                  <ul class="navbar-nav">
+                      <li class="nav-item">
+                          <a class="nav-link" href="#">
+                              <i class="bi bi-house"></i> Dashboard
+                          </a>
+                      </li>
+                      <li class="nav-item">
+                          <a class="nav-link" href="product_display.html">
+                              <i class="bi bi-bar-chart"></i> Product Line Demand
+                          </a>
+                      </li>
+                      <li class="nav-item">
+                          <a class="nav-link" href="inventory_management.html">
+                              <i class="bi bi-chat"></i> Inventory Management
+                              <span class="badge bg-soft-primary text-primary rounded-pill d-inline-flex align-items-center ms-auto">6</span>
+                          </a>
+                      </li>
+                      <li class="nav-item">
+                          <a class="nav-link" href="#">
+                              <i class="bi bi-bookmarks"></i> Inventory Forecast
+                          </a>
+                      </li>
+                      <li class="nav-item">
+                          <a class="nav-link" href="#">
+                              <i class="bi bi-people"></i> Vendors
+                          </a>
+                      </li>
+                  </ul>
+                  <!-- Divider -->
+                  <hr class="navbar-divider my-5 opacity-20">
+                  <!-- Navigation -->
+                  <ul class="navbar-nav mb-md-4">
+                      <li>
+                          <div class="nav-link text-xs font-semibold text-uppercase text-muted ls-wide" href="#">
+                              Vendor Contacts
+                              <span class="badge bg-soft-primary text-primary rounded-pill d-inline-flex align-items-center ms-4">13</span>
+                          </div>
+                      </li>
+                      <li>
+                          <a href="#" class="nav-link d-flex align-items-center">
+                              <div class="me-4">
+                                  <div class="position-relative d-inline-block text-white">
+                                      <img alt="Image Placeholder" src="https://i.pinimg.com/736x/5d/a8/76/5da8768c07eb3db7dbf5f394ab4444a6.jpg" class="avatar rounded-circle">
+                                      <span class="position-absolute bottom-2 end-2 transform translate-x-1/2 translate-y-1/2 border-2 border-solid border-current w-3 h-3 bg-success rounded-circle"></span>
+                                  </div>
+                              </div>
+                              <div>
+                                  <span class="d-block text-sm font-semibold">
+                                      Ramlal Yadav
+                                  </span>
+                                  <span class="d-block text-xs text-muted font-regular">
+                                      Bihar, UP
+                                  </span>
+                              </div>
+                              <div class="ms-auto">
+                                  <i class="bi bi-chat"></i>
+                              </div>
+                          </a>
+                      </li>
+                      <li>
+                          <a href="#" class="nav-link d-flex align-items-center">
+                              <div class="me-4">
+                                <div class="position-relative d-inline-block text-white">
+                                    <img alt="..." src="https://static.vecteezy.com/system/resources/previews/031/725/956/large_2x/ai-generated-studio-portrait-of-handsome-indian-man-on-colour-background-photo.jpg" class="avatar rounded-circle">
+                                    <span class="position-absolute bottom-2 end-2 transform translate-x-1/2 translate-y-1/2 border-2 border-solid border-current w-3 h-3 bg-danger rounded-circle"></span>
+                                </div>
+                              </div>
+                              <div>
+                                  <span class="d-block text-sm font-semibold">
+                                      RadhaKrishna Kumar
+                                  </span>
+                                  <span class="d-block text-xs text-muted font-regular">
+                                      ChandniChowk, Delhi
+                                  </span>
+                              </div>
+                              <div class="ms-auto">
+                                  <i class="bi bi-chat"></i>
+                              </div>
+                          </a>
+                      </li>
+                      <li>
+                          <a href="#" class="nav-link d-flex align-items-center">
+                              <div class="me-4">
+                                  <div class="position-relative d-inline-block text-white">
+                                      <img alt="..." src="https://i.pinimg.com/736x/c8/b2/76/c8b276ea169aecb66cd0b7e6ad114274.jpg" class="avatar rounded-circle">
+                                      <span class="position-absolute bottom-2 end-2 transform translate-x-1/2 translate-y-1/2 border-2 border-solid border-current w-3 h-3 bg-danger rounded-circle"></span>
+                                  </div>
+                              </div>
+                              <div>
+                                  <span class="d-block text-sm font-semibold">
+                                      Hrushikesh Kachgunde
+                                  </span>
+                                  <span class="d-block text-xs text-muted font-regular">
+                                      Aurangabad
+                                  </span>
+                              </div>
+                              <div class="ms-auto">
+                                  <i class="bi bi-chat"></i>
+                              </div>
+                          </a>
+                      </li>
+                  </ul>
+                  <!-- Push content down -->
+                  <div class="mt-auto"></div>
+                  <!-- User (md) -->
+                  <ul class="navbar-nav">
+                      <li class="nav-item">
+                          <a class="nav-link" href="#">
+                              <i class="bi bi-person-square"></i> Account
+                          </a>
+                      </li>
+                      <li class="nav-item">
+                          <a class="nav-link" href="#">
+                              <i class="bi bi-box-arrow-left"></i> Logout
+                          </a>
+                      </li>
+                  </ul>
+              </div>
+          </div>
+      </nav>
+      <!-- Main content -->
+      <div class="h-screen flex-grow-1 overflow-y-lg-auto">
+          <!-- Header -->
+          <header class="bg-surface-primary border-bottom pt-6">
+              <div class="container-fluid">
+                  <div class="mb-npx">
+                      <div class="row align-items-center">
+                          <div class="col-sm-6 col-12 mb-4 mb-sm-0">
+                              <!-- Title -->
+                              <h1 class="h2 mb-0 ls-tight">Demand Forecasting</h1>
+                          </div>
+                          
+                  </div>
+              </div>
+          </header>
+          <!-- Main -->
+          <main class="py-6 bg-surface-secondary">
+              <div class="container-fluid">
+                  <!-- Card stats -->
+                  <div class="row g-6 mb-6">
+                      <div class="col-xl-3 col-sm-6 col-12">
+                          <div class="card shadow border-0">
+                              <div class="card-body">
+                                  <div class="row">
+                                      <div class="col">
+                                          <span class="h6 font-semibold text-muted text-sm d-block mb-2">Number of Sales</span>
+                                          <span class="h3 font-bold mb-0">7587</span>
+                                      </div>
+                                      <div class="col-auto">
+                                          <div class="icon icon-shape bg-tertiary text-white text-lg rounded-circle">
+                                              <i class="bi bi-credit-card"></i>
+                                          </div>
+                                      </div>
+                                  </div>
+                                  <div class="mt-2 mb-0 text-sm">
+                                      <span class="badge badge-pill bg-soft-success text-success me-2">
+                                          <i class="bi bi-arrow-up me-1"></i>13%
+                                      </span>
+                                      <span class="text-nowrap text-xs text-muted">Since last month</span>
+                                  </div>
+                                  <div class="mt-2 mb-0 text-sm">
+                                    <!-- Displaying forecast goal with an upward arrow and a percentage increase -->
+                                    <span class="badge badge-pill bg-soft-info text-info me-2">
+                                        <i class="bi bi-arrow-up me-1"></i>14%
+                                    </span>
+                                    <!-- Providing context for the forecast goal -->
+                                    <span class="text-nowrap text-xs text-muted">Forecasted Sales</span>
+                                </div>
+                                
+                                
+                              </div>
+                          </div>
+                      </div>
+                      <div class="col-xl-3 col-sm-6 col-12">
+                          <div class="card shadow border-0">
+                              <div class="card-body">
+                                  <div class="row">
+                                      <div class="col">
+                                          <span class="h6 font-semibold text-muted text-sm d-block mb-2">Order Revenue</span>
+                                          <span class="h3 font-bold mb-0">₹75,34,987</span>
+                                      </div>
+                                      <div class="col-auto">
+                                          <div class="icon icon-shape bg-primary text-white text-lg rounded-circle">
+                                              <i class="bi bi-people"></i>
+                                          </div>
+                                      </div>
+                                  </div>
+                                  <div class="mt-2 mb-0 text-sm">
+                                      <span class="badge badge-pill bg-soft-success text-success me-2">
+                                          <i class="bi bi-arrow-up me-1"></i>30%
+                                      </span>
+                                      <span class="text-nowrap text-xs text-muted">Since last month</span>
+                                  </div>
+                                  <div class="mt-2 mb-0 text-sm">
+                                    <!-- Displaying forecast goal with an upward arrow and a percentage increase -->
+                                    <span class="badge badge-pill bg-soft-info text-info me-2">
+                                        <i class="bi bi-arrow-up me-1"></i>28%
+                                    </span>
+                                    <!-- Providing context for the forecast goal -->
+                                    <span class="text-nowrap text-xs text-muted">Forecasted Revenue</span>
+                                </div>
+                              </div>
+                          </div>
+                      </div>
+                      <div class="col-xl-3 col-sm-6 col-12">
+                          <div class="card shadow border-0">
+                              <div class="card-body">
+                                  <div class="row">
+                                      <div class="col">
+                                          <span class="h6 font-semibold text-muted text-sm d-block mb-2">Average Order Value</span>
+                                          <span class="h3 font-bold mb-0">₹1499</span>
+                                      </div>
+                                      <div class="col-auto">
+                                          <div class="icon icon-shape bg-info text-white text-lg rounded-circle">
+                                              <i class="bi bi-clock-history"></i>
+                                          </div>
+                                      </div>
+                                  </div>
+                                  <div class="mt-2 mb-0 text-sm">
+                                      <span class="badge badge-pill bg-soft-danger text-danger me-2">
+                                          <i class="bi bi-arrow-down me-1"></i>-5%
+                                      </span>
+                                      <span class="text-nowrap text-xs text-muted">Since last month</span>
+                                  </div>
+                                  <div class="mt-2 mb-0 text-sm">
+                                    <!-- Displaying forecast goal with an upward arrow and a percentage increase -->
+                                    <span class="badge badge-pill bg-soft-info text-info me-2">
+                                        <i class="bi bi-arrow-up me-1"></i>4%
+                                    </span>
+                                    <!-- Providing context for the forecast goal -->
+                                    <span class="text-nowrap text-xs text-muted">Forecasted AOV</span>
+                                </div>
+                              </div>
+                          </div>
+                      </div>
+                      <div class="col-xl-3 col-sm-6 col-12">
+                          <div class="card shadow border-0">
+                              <div class="card-body">
+                                  <div class="row">
+                                      <div class="col">
+                                          <span class="h6 font-semibold text-muted text-sm d-block mb-2">Customer Acquisition</span>
+                                          <span class="h3 font-bold mb-0">12%</span>
+                                      </div>
+                                      <div class="col-auto">
+                                          <div class="icon icon-shape bg-warning text-white text-lg rounded-circle">
+                                              <i class="bi bi-minecart-loaded"></i>
+                                          </div>
+                                      </div>
+                                  </div>
+                                  <div class="mt-2 mb-0 text-sm">
+                                      <span class="badge badge-pill bg-soft-success text-success me-2">
+                                          <i class="bi bi-arrow-up me-1"></i>10%
+                                      </span>
+                                      <span class="text-nowrap text-xs text-muted">Since last month</span>
+                                  </div>
+                                  <div class="mt-2 mb-0 text-sm">
+                                    <!-- Displaying forecast goal with an upward arrow and a percentage increase -->
+                                    <span class="badge badge-pill bg-soft-info text-info me-2">
+                                        <i class="bi bi-arrow-up me-1"></i>8%
+                                    </span>
+                                    <!-- Providing context for the forecast goal -->
+                                    <span class="text-nowrap text-xs text-muted">Forecasted CAR</span>
+                                </div>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+                  <!-- Charts -->
+
+<div class="container-fluid">
+
+<!-- Single Long Bar Chart Card with Inline Styles -->
+<div style="margin-bottom: 16px; width: 100%;">
+    <div style="box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); border: 0; border-radius: 8px; overflow: hidden;">
+        <div style="padding: 20px;">
+            <span style="font-size: 16px; font-weight: 600; color: #6c757d; display: block; margin-bottom: 10px;">Clothing Sales vs Forecast</span>
+            <canvas id="forecastChart" style="height: 400px; width: 100%;"></canvas>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+    <!-- First Row: Bar Chart and Pie Chart -->
+    <div class="row">
+        <!-- Bar Chart Card -->
+        <div class="col-xl-6 mb-4">
+            <div class="card shadow border-0">
+                <div class="card-body">
+                    <span class="h6 font-semibold text-muted text-sm d-block mb-3">Clothing Sales vs Forecast</span>
+                    <div id="barChart" style="height: 420px;"></div>
+                </div>
+            </div>
+        </div>
+        <!-- Pie Chart Card -->
+        <div class="col-xl-6 mb-4">
+            <div class="card shadow border-0">
+                <div class="card-body">
+                    <span class="h6 font-semibold text-muted text-sm d-block mb-3">Projection for Sales</span>
+                    <div id="pieChart" style="height: 420px;"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Second Row: Bubble Map and Treemap -->
+    <div class="row">
+        <!-- Bubble Map Card -->
+        <div class="col-xl-6 mb-4">
+            <div class="card shadow border-0">
+                <div class="card-body">
+                    <span class="h6 font-semibold text-muted text-sm d-block mb-3">Sales Distribution Across States</span>
+                    <div id="india" style="height: 600px; width: 600px;"></div>
+                </div>
+            </div>
+        </div>
+        <!-- Treemap Card -->
+        <div class="col-xl-6 mb-4">
+            <div class="card shadow border-0">
+                <div class="card-body">
+                    <span class="h6 font-semibold text-muted text-sm d-block mb-3">Clothing Sales by Category</span>
+                    <div id="treemap"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+   
+    <script>
+        // Sample data for Total Sales, Forecasted Sales, and Trend
+        var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+        var totalSalesData = [100, 120, 150, 80, 200, 180, 220, 250, 170, 130, 160, 190];
+        var forecastedSalesData = [90, 110, 140, 70, 180, 160, 200, 230, 150, 120, 150, 180];
+        var trendData = [95, 105, 135, 75, 190, 170, 210, 240, 160, 125, 155, 185];
+    
+        var ctx = document.getElementById('forecastChart').getContext('2d');
+        var myChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: months,
+                datasets: [{
+                    label: 'Total Sales',
+                    backgroundColor: 'rgba(75, 192, 192, 0.7)',
+                    borderColor: 'rgba(75, 192, 192, 1)',
+                    borderWidth: 1,
+                    data: totalSalesData
+                }, {
+                    label: 'Forecasted Sales',
+                    backgroundColor: 'rgba(255, 99, 132, 0.7)',
+                    borderColor: 'rgba(255, 99, 132, 1)',
+                    borderWidth: 1,
+                    data: forecastedSalesData
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+    
+        // Add line chart for trend
+        var trendDataset = {
+            label: 'Trend',
+            borderColor: 'rgba(255, 206, 86, 1)',
+            borderWidth: 2,
+            type: 'line',
+            data: trendData,
+            yAxisID: 'trend-y-axis'
+        };
+    
+        myChart.data.datasets.push(trendDataset);
+        myChart.update();
+    </script>
+    
+
+</div>
+
+
+
+<!-- JavaScript Code -->
+<script>
+    // AnyChart Treemap
+    anychart.onDocumentReady(function () {
+
+            // Create the data
+            var dataSet = [
+                {
+                    name: "Clothing Sales", children: [
+                        { name: "Men's Clothing", children: [
+                            { name: "Shirts", value: 50000 },
+                            { name: "Trousers", value: 40000 },
+                            { name: "Jackets", value: 35000 },
+                            { name: "Suits", value: 45000 },
+                            { name: "Hoodies", value: 38000 },
+                            { name: "Sweaters", value: 32000 },
+                            { name: "Jeans", value: 42000 },
+                        ] },
+                        { name: "Women's Clothing", children: [
+                            { name: "Dresses", value: 60000 },
+                            { name: "Skirts", value: 35000 },
+                            { name: "Blouses", value: 48000 },
+                            { name: "Coats", value: 42000 },
+                            { name: "Leggings", value: 30000 },
+                            { name: "Scarves", value: 25000 },
+                            { name: "Handbags", value: 35000 },
+                        ] },
+                        { name: "Children's Clothing", children: [
+                            { name: "T-shirts", value: 30000 },
+                            { name: "Jeans", value: 25000 },
+                            { name: "Shorts", value: 20000 },
+                            { name: "Dresses", value: 28000 },
+                            { name: "Sweatpants", value: 18000 },
+                            { name: "Hats", value: 15000 },
+                            { name: "Shoes", value: 22000 },
+                        ] }
+                    ]
+                }
+            ];
+
+            // Create the treemap chart and set the data
+        var chart = anychart.treeMap(dataSet, "as-tree");
+
+// Set the chart title
+chart.title("Clothing Sales by Category");
+
+// Set a custom color scale
+var customColorScale = anychart.scales.linearColor();
+customColorScale.colors(['#ADD8E6', '#0000FF']);
+chart.colorScale(customColorScale);
+chart.colorRange().enabled(true);
+chart.colorRange().length('90%');
+
+// Format the labels
+chart.labels().useHtml(true);
+chart.labels().format(
+    "<span style='font-size: 16px; color: #333'>{%name}</span><br>{%value} units"
+);
+
+// Format the tooltips
+chart.tooltip().format(
+    "Sales: {%value} units"
+);
+
+// Sort in ascending order
+chart.sort("asc");
+
+// Set the container id for the chart (changed to "treemap")
+chart.container("treemap");
+
+// Initiate drawing the chart
+chart.draw();
+
+});
+
+                    var barOptions  = {
+                        series: [
+                            {
+                                name: 'Actual Sales',
+                                data: [5000, 7000, 4500, 4500, 2900, 2300, 2000, 1400]
+                            },
+                            {
+                                name: 'Forecasted Sales',
+                                data: [5500, 6000, 6100, 5600, 3000, 2700, 2400, 1100]
+                            }
+                        ],
+                        chart: {
+                            type: 'bar',
+                            height: 400, // Adjusted chart height
+                            width: 450   // Adjusted chart width
+                        },
+                        plotOptions: {
+                            bar: {
+                                horizontal: true,
+                                dataLabels: {
+                                    position: 'top'
+                                }
+                            }
+                        },
+                        dataLabels: {
+                            enabled: true,
+                            offsetX: -6,
+                            style: {
+                                fontSize: '10px', // Adjusted font size
+                                colors: ['#fff']
+                            }
+                        },
+                        stroke: {
+                            show: true,
+                            width: 1,
+                            colors: ['#fff']
+                        },
+                        xaxis: {
+                            categories: ['Saree', 'Shirt', 'Pant', 'Kurta', 'Dress', 'Jeans', 'Jacket', 'Skirt']
+                        },
+                        yaxis: {
+                            title: {
+                                text: 'Clothing Categories'
+                            }
+                        },
+                        legend: {
+                            position: 'top'
+                        },
+                        colors: ['#4680ff', '#0acf97']
+                    };
+                
+            
+
+                    var barChart = new ApexCharts(document.querySelector("#barChart"), barOptions);
+    barChart.render();
+
+    // Pie Chart
+    var pieOptions = {
+        series: [44, 55, 13, 43, 22],
+        chart: {
+            width: 480,
+            type: 'pie',
+            offsetX: 50, // Adjust for space
+        },
+        labels: ['Saree', 'Shirt', 'Pant', 'Kurta', 'Dress'],
+        colors: ['#4680ff', '#0acf97', '#ffbb44', '#ff8447', '#4ac4ec'], // Different colors
+        responsive: [{
+            breakpoint: 480,
+            options: {
+                chart: {
+                    width: 400
+                },
+                legend: {
+                    position: 'bottom'
+                }
+            }
+        }]
+    };
+
+    var pieChart = new ApexCharts(document.querySelector("#pieChart"), pieOptions);
+    pieChart.render();
+        
+    var bubble_map = new Datamap({
+        element: document.getElementById('india'),
+        scope: 'india',
+        geographyConfig: {
+            popupOnHover: false,
+            highlightOnHover: false,
+            borderColor: '#000',
+            borderWidth: 0.5,
+            dataUrl: 'https://rawgit.com/Anujarya300/bubble_maps/master/data/geography-data/india.topo.json'
+        },
+        fills: {
+            'HIGH_SALES': '#1E88E5',  // Light blue for bubbles
+            'HIGH_SALES_HOVER': '#0D47A1' ,
+            defaultFill: '#FFFFFF'
+        },
+        setProjection: function (element) {
+            var projection = d3.geo.mercator()
+                .center([90.9629, 23.5937])
+                .scale(1000);
+            var path = d3.geo.path().projection(projection);
+            return { path: path, projection: projection };
+        }
+    });
+
+    let bubbles = [
+        { centered: "MH", fillKey: "HIGH_SALES", radius: 23, state: "Maharashtra", sales: 5000 },
+        { centered: "AP", fillKey: "HIGH_SALES", radius: 12, state: "Andhra Pradesh", sales: 4800 },
+        { centered: "TN", fillKey: "HIGH_SALES", radius: 27, state: "Tamil Nadu", sales: 4600 },
+        { centered: "WB", fillKey: "HIGH_SALES", radius: 15, state: "West Bengal", sales: 4300 },
+        { centered: "MP", fillKey: "HIGH_SALES", radius: 19, state: "Madhya Pradesh", sales: 4100 },
+        { centered: "UP", fillKey: "HIGH_SALES", radius: 25, state: "Uttar Pradesh", sales: 3900 },
+        { centered: "RJ", fillKey: "HIGH_SALES", radius: 20, state: "Rajasthan", sales: 3700 },
+        { centered: "GJ", fillKey: "HIGH_SALES", radius: 30, state: "Gujarat", sales: 4600 },
+        { centered: "KA", fillKey: "HIGH_SALES", radius: 38, state: "Karnataka", sales: 4300 },
+        { centered: "KL", fillKey: "HIGH_SALES", radius: 12, state: "Kerala", sales: 4000 },
+        { centered: "PB", fillKey: "HIGH_SALES", radius: 8, state: "Punjab", sales: 4200 },
+        { centered: "HR", fillKey: "HIGH_SALES", radius: 29, state: "Haryana", sales: 4100 },
+        { centered: "BR", fillKey: "HIGH_SALES", radius: 27, state: "Bihar", sales: 3900 }
+    ];
+
+    setTimeout(() => {
+        bubble_map.bubbles(bubbles, {
+            popupTemplate: function (geo, data) {
+                return `<div class="hoverinfo">State: ${data.state}, Sales: ${data.sales}</div>`;
+            },
+            fillOpacity: 0.7,  // Adjust opacity for better visual effect
+            highlightOnHover: true,
+            highlightFillColor: '#0D47A1',  // Dark blue on hover
+            highlightBorderColor: '#FFFFFF'  // White border on hover
+        });
+    }, 1000);
+</script>
+
+
+<div class="card shadow border-0 mb-7">
+    <div class="card-header">
+        <h5 class="mb-0">Clothing Lines</h5>
+    </div>
+    <div class="table-responsive">
+        <table class="table table-hover table-nowrap">
+            <thead class="thead-light">
+                <tr>
+                    <th scope="col">Name</th>
+                    <th scope="col">Launch Date</th>
+                    <th scope="col">Brand</th>
+                    <th scope="col">Price Range</th>
+                    <th scope="col">Availability</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        <img alt="..." src="https://images-cdn.ubuy.co.in/6549e960d615fe1fb86f6ba5-men-s-baggy-jeans-2023-new-fashion-black.jpg" class="avatar avatar-sm rounded-circle me-2">
+                        <a class="text-heading font-semibold" href="#">
+                            Baggy Jeans
+                        </a>
+                    </td>
+                    <td>
+                        Jan 15, 2023
+                    </td>
+                    <td>
+                        <img alt="..." src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAV0AAACRCAMAAABXC5v+AAAAk1BMVEXEEyD////BAADDDBvCAAvQV13DARfDABTuzM3DCBnrvL7CABHCAArfkZXCAADJMTrmsrX34+TbiIzlqqzTZmvNRk3KPUT56uvjoqX89fXswcP78PH++vrhnaDz2drZf4PXdXnx0tTFGiXVbnPJNj7agobOTVPIKTPmrrDXdnrej5PgmJvbh4vUZ2zHISzOS1LRXWISBD2vAAARVElEQVR4nO2daXuyOhCGYUARQduKu61LtVprt///6w4hLllmstjlXOeU59PbV1S4DZPJk2QIhlFQC1VzG5Z6zao/4Lb89x3wV27WU/ZSuG1Wx92X/5wC8glR0Mt+62z/a4JWSW12pCbRjRJYh2ekcGD/3umtNBoGbQx6LdbwGLROzv+S6LK/p2f0UcIOfMi1T8h6waimiytbMGjvxyap0uWvxvy1qfzaSdAOwqAOvKhkZhrdKjQk/N8VaZ0jjIKwn/zKyf7nBLMSWUHRjV8vdKNH9u+1yrEMLUE4rkMDJh52l6c+X4u7q/LvyanLm2CBN+mXdOc1XUzpgNEdpMc/BbpRlMbwwl49ZQQwF/44C8Yl3bCmiykRAmtwpDuHqNTjzcdiXuW7wyP7KkSvNLpzRvcjDWpp4l3VmVhFV1HnHJTbFXrlEyBkdDt6plbLge7r5UWMbrqt6Lbq0IAo2xvpzopHoYvD6Oadiu6kposoeWMQm6c/K7qzcVGMq2ShCyCkt1XcVRspG0izvGNTjyd08ZzhQ8oZ5lAqY6aNnMaiOQNL0xjdRW3k6OL57l7Pd/OFmC7wF5F8N9qEnO5tHRoQkWO1qqWKtgIfq73JY7WqV2R0ayMHE+kzpDcM5ovgOewRn6F6Q4AbELWC7InyyOBBfIXwyGB0ovtWGzm6eOB9wfzditxlbJaHSNjlzTYUo0stQdXcxClqSnSTRtXjcXf3aJcpcxM8oavo1kYOpuSTsVkj82p8+BBmHGjV/WnZbnGmWxs5qODu0nhlupEwUwm9KjFuKu+dX+hulddqMfHGe+AMZX+XJ7397JSOaW4ChBe6h9rIwVRF3nDA+nzNPWdtc5IfbXRtRpjP1h/p1kYOqihicCZROS6LD/PVShjsppvy7/lTxuPri8ovPwh0ayMHV9xndEYZw8s8BuGltPIcoBOGiHF+bPVHuuGmdtBR8ZUgo8cYfTWCMXt5luvTwROR7lNt5ODid/59H5DhbJxULXTyrjXNdBOKdOsVOZQ43rCdqHwz2N9zuHrCxUfRZ7q1kUMKFhxRsYP81EijDGB5V/33PEGCKh9tnOmGzdrIoQSDEWc073wA1/v6lgfWcIyFDG5ECHS1lSS1zmryvq3S7G4+v7s//TUfovd8lIYy3drIMQmS8ZnoRfM+4KkWXwsh0K2NHKMi6C5bEtpRMQTqfj/2hBe6f8fIgYu8+pqyI/voFa3VfNVqP6wfoUsPEbiFI9Jt/BEj57E1PanlOxmexsefJU+M7+yGKt0/YuRwS+uowc+MUJsNje5vGjlplp9uzjz73VzQRlc4NYjNLZRUftDouhk5zViX1yA6LU8+2y4PxW15Z07bz+PFZxkJY/kyM+RbSpljl3xsFSc1RSa6bIgAH/tD0Z62qlN77e/K//FPVaGl0XUycpr9nqbXV+dfuAkwOLRmoaJZqzMUu5is10H1abrQ+CAeegji3nOh6nkYkXRjeFy0R+qp3c+Lz64v4KOFI9F9wn0g+X1T9euZHKNXDNtbjexJo4d3OLXNvMCPuTfcXvFCOnQF3NVW9NnE6UYAT3PkeP610z44sDnrZOGEIl0XI+c0fpbllG3E8KS1DFmt7Sk57yKpO9ML3fOC/OGDFFrIBzRwuhAQv+dJs1dwj398jrjSha6LkXM13RQWZLO9qHXDzyHv4a9PutTnZ2vpwBUE7nRTYaBLarZ2zo4FSBe64aP97dfShc2d/QKYHvg1APFTkAu5Qf78j9SdLgwt99RRraZj+BVuI4Hu2t74r6QLT07nz3T3zs4iW+Kv3hONl8/ensVmYmi690zVn4wuEF+FfPmH05BA/P0Eus/20HAdXWzPAX0NW3YaQLR1ovGC3CWxcSdBtww7pY7H30Q+P3zZKbpkrYkQpAS6DkbOVXTR6zSoD1pjPAtvvMf5belCSLrBuVdf5kG+Ro6i1XDJq54vxwt0Q3tcuYYu/h6TPnOtNZ51wJqAQrKRWOiep8mjneep7ezZp3jmIl27kXMFXapDHt2OD4cCZzhMguYH/rZ7JDSkQ+kQfg8a6bJ0ny3Ox37D2fN+wIy0qHHQX0X2WqtKhMNFunYjx59ussXeEU6HzGMoR8U77BMnWUTGE6TxKmMcPqQz0K3WJ7L0PunrhyzKkXrKEpeomcNQ+5CejdHFwgllunYjx58uoOnOxdSPAIuwUxBHPLK0yBu9S6+fljDTdNlL1bUi47m9xCCFV+V1qx2Ti/eqSNc00rySbt7B3jAUG0A+RI4os0MqXj9oC+LklOS41Jumy4JtFT2k3Pco7cPVs1ha8lbpe0W68kaWb6GLjmmX8iXAQj9kBui1M90rlxdJl3BZH0633ffBsLr3say6qwyptH4PLYAjXo14xdKp9WwJhy/dGBvSYtuVNb3kl9kpRUrjVQ47jYmMGVmKvbPSLShX072dSirMgVfuYSW6ViPHly46KNDKbfA9M7LK+BYl+n9XkttAV3rt7JaY6JquZt4ouzWxASsWsaVXi6VALdGdfTPdFAupyPxohhzFIi+RzEkbHZWDLuUqHOjiacnsdr+rZk2umReSCclBCyn7ZHjvSSRdtE/DyvMgpg3r1C82tPKF4h5d6ZiL0edCF3WrK93fTR+WwwSUdmyXfCkyXWuH6EcXvcIWMiODBZCSU0yYAELjVSL7ZVOuC12r/zFrFfsbuKwfs0rJDmW6NiPHly7W9iZ3urDMgq29wrPlMEwvO/GktiKENge6sZrM4rpfHT5A7ewIKWkIns58D10qp3ITW3uVESbLufEqHeLi0uE50I2oAYuuyW3DaXZCtHBClW5oScn86PJN+NdqZXIiT5FXbtxir+xAl/x0VKOFw+yl8okK3c9r/C7qPYmfvaeoQpU08BePiwr5jsazXoXG4UIX8xlMZ9S3DmZj+R0KXaSa4fV0M2QQ5i7uhqFTu+Fp47g8DpE8ABe63tazrdZCUzFNFLr67pWv0PXx/XVV83xUdKn636bcsiX/yolu0HWbUzvLMsOQP8iHK3QtRs5vtt3jFn0qKY0itWHL9pUb3TTyCb2hzUdU7zSFrmXh2q/S5UMbavqgbLzKUFCec3OjG0S+UycdE15QUkuVrtnI8ezViMkxRx0HjlTO/xjJzVqZcnOkWx746RcdDKVCtDCm0jUbbJ757o3XaWuXcfwU9RSPegb545VJC2e6QXLavuMmQ8evWYLqqZuNHM+xGubO8LJTLjp/6Ri/zFw+GWXOwp0uWy45KJwbsGHNktZHaA3j3eRa+I6EsTbhvyc5xpeVyRFDnbLwoVvt+h2+tAjTSBG9ZklzozS6e9OAz5fuM3a4zYjTlL84XLN62n50A75s/309blkbMfkheges0TUaOZ508bGQf1VPyokUpNVo9qbLFDHPMR6uO+05/ZXk1j59JkmjazRyvOcmsHsaD1xRKkts4LE9tdMW4TvRjdDvTBO2uv99QQzkyLtbv1X1DplcxUnSzdIIFxEaXhG80ePHQJL0lBHKiTxL38zoQjcaypJiVpTBEF2KSdYX07sZna5p/TxOd3eDa/OY4jnZDknqVX5S4pO9oZ8jXIZeIcHFI1O+VB2IZehIhpw572qH6nRNVeY9BzbrBH/DLFJ+wVSbFlbHBuS6+0pIZ+FEVz27G9XlQZIe0ixABk86XZOR40m3nygzISfN5N3LsNOuQlnE3yScyKOQJMnJgVQt0lki/+xYRCLHW6qFE2J0TUaON91jtS5dDznwjqgMb8hpaT2f0SvEjEE3B1Ltdcuf/fJDRYAZ1GTegZilyDDTYOT40yUN2vB2vet2u9lmiX2mViANn7w/ChsBOdFFJq2LHUAex3kXYIctV6FzKiRBQui+0EbOFXSj2GE7iiok9humx1FP2y3fxeb6724Pr73DuI2bD2rRvLMwJxqhazByrqAbpO9uA0xBmIlKRHAmdPDnRpeaWSKlrRE8K0ZGlAhdg5FzDd0g2XnixW8+PHcOqfVZjmM1cBllX2Qwz7GbC7P3aCPnKrpBs2nOpxTN1XWIXLywHSLct3AdCVMOHCrTzAQWZDC6tJFzHd2y87XsZRQ1pbbdgZ5a8OPxo53dc3SJMSpTeRs0cmF06ZnPK+mWb9y6+qcLw72HOpHE7nF3Fwc+iY2ziibGCXdsISdK15B0XEs3SKDnEn2ngcFAQze4Un2wh0eWZS4b6h7Mi3HQCSp0WoV0GjzpSn5Hbt2GHbaH5s24WGijRv0+DmQEG8uFzQ6JbREYlsChdMnHBX6FLtvmPnimk995LyMKUJ2FLMUn+xnfuYmkQ3a9o+ct6IU0FTWxd6J0DUYO4TUSDqR+EbDp6Wn6rDV+S11qICSaD0cfmyaaTEViohgel8+qaT5qFcudywJIfKIApWtZkfMlVXWRdp/73kNRjB8OT8vPGzZF6ViCxv4DfkFV6ZZs018vnp4W+3V/yFb1d92WR+OJHUqX2kr+fdfRzOIcupDn8S9XHbIrSrIsi7MsSVKPM8PtFHyxwA+VkvofCy+HgtPt+NSBqUUuJsTp2ra81VKEWTgk3brKvKcIf5RYpOW9ouOPi1hxQdCtHxfoJWoZLEG3flygl6iVygRdhxoatS6i1hgTdOvHBXqJ2ppF0SWNnFq6qAXcJF3Tipxaish9bxTdusq8h8i5OYru36ky/w0iV7mRdLe1keMsoCCSdP1XiP9ZpURlOgPd+nGBzsLLghnp1kaOs+j1mSTd0PdRF39X9KYZmm5t5DjKUKKEplsbOY4ybDan6daPC3SUoTQUTTf83uns/68M1XUMdMl9WbVEkStfzXTrxwU6KTHspTPQrY0cJ5nWJhvo1kaOk0wbFU10tW1NtRCRFo6F7h95XODX1MTL5tvp1kaOg3LTI5hMdGsjx0HGLbYmuk6PC/zrMtY9MdJ9qo0cm8xVZo10XR4XSH5tmgiPN70UZY+N6+t/WlHaTNgzSfM8Z887TZrpF8f75lqXRrpXGTlRUj3T+HHQf+qM29PWas7rQ89XrWm7OPTW22opP1xVtP1KnZ5jG918NN72ry/Vk0Vfevv153bDi/LnyXWnY96nY6Tr8NQqSdXGg+Cz97yyFKebzKfj/UfuX7TdV1GT/dTxYHl4bs2p/Uazu9bzYb3pOm+SEGSu2GOmSxaH0sV2m9zsi5XPjutZa7xm5RB+ZtTSLH+9oNG7JamqGrWK/cbzCcLUMzG4zHQdjZyoJPvRcSxFp2rSOjTAtWq7o6q6Yp+H6RWlIe5X47fYmbClPLaZrouR0wTY9VpuW23pLxo3coi/J0qUZB/Xz551dWXdFW+J03MQLNvLzXRD69PEALbFly7kotVL2d19satjd1H/a2TPp9PZ2E/HUmvKQtdY2i8FaNxeFw4IjQrnJztg55Ozu+g7T2c8tADOzR9goWswcmIYFlfENZtmxfaqFhzlsHn4prtI0OhhY9hiaynkZaNLGTkpdOkHn39Vs/GNZwwuA8LND6Dlmj91qZ/baOGEVrq4kZPA0OcRwVfortd0jxAJRL2fQsvVHuDFGWxPVLDQxYycGN5+rNkKajdcdr0HUdmNfWesJTRfYk9Ws5WutdF9Va/QoYjFd2lU3pKWANGE94dv7VdpTTqZejbWBwXZ6CpGDnRffuliKt0X76YeLoPGLzTbi8aRzJd6QtlZNrqSkZPD4YujBn9Nh1QAzmHxs9EWUZGKfK2lVmx0hfKgmVvhoG9Xa4vwjSA+/CtnMxYK5FiLLlvpnoycJix/ILt102qrxIcIsvGv30UndU75g/35cVa6vHBwBNtfvwtFrQbSHZn4FMD7dk32/GayP+HMSrcyciCgK4j+kqa70x2Zd/Gier+ou+rHtlcItNINszIouBfz+0EVVf6bwOu/FhMEtZPYZuGELnQb7lUGf1j3C0h8n3n0c1qAxcIJXeiOf3jQ66O7z1/Nb82aI4+BV/QPCZYJw/vDCosAAAAASUVORK5CYII=" class="avatar avatar-xs rounded-circle me-2">
+                        <a class="text-heading font-semibold" href="#">
+                            Levi's
+                        </a>
+                    </td>
+                    <td>
+                        ₹550 - ₹5200
+                    </td>
+                    <td>
+                        <span class="badge badge-lg badge-dot">
+                            <i class="bg-success"></i>In Stock
+                        </span>
+                    </td>
+                    <td class="text-end">
+                        <a href="#" class="btn btn-sm btn-neutral">Details</a>
+                        <button type="button" class="btn btn-sm btn-square btn-neutral text-danger-hover">
+                            <i class="bi bi-trash"></i>
+                        </button>
+                    </td>
+                </tr>
+                <!-- Add more rows for different clothing lines similarly -->
+                <!-- Example for another clothing line -->
+                <tr>
+                    <td>
+                        <img alt="..." src="https://d2x02matzb08hy.cloudfront.net/img/clothing/hero_image/781232804/l3.jpg" class="avatar avatar-sm rounded-circle me-2">
+                        <a class="text-heading font-semibold" href="#">
+                            Skirt
+                        </a>
+                    </td>
+                    <td>
+                        Feb 20, 2023
+                    </td>
+                    <td>
+                        <img alt="..." src="https://i0.wp.com/img.paisawapas.com/ovz3vew9pw/2023/03/04232144/expensive-shirt-brands.png?resize=554%2C301&ssl=1" class="avatar avatar-xs rounded-circle me-2">
+                        <a class="text-heading font-semibold" href="#">
+                            Versace
+                        </a>
+                    </td>
+                    <td>
+                        ₹370 - ₹3300
+                    </td>
+                    <td>
+                        <span class="badge badge-lg badge-dot">
+                            <i class="bg-warning"></i>Coming Soon
+                        </span>
+                    </td>
+                    <td class="text-end">
+                        <a href="#" class="btn btn-sm btn-neutral">Details</a>
+                        <button type="button" class="btn btn-sm btn-square btn-neutral text-danger-hover">
+                            <i class="bi bi-trash"></i>
+                        </button>
+                    </td>
+                </tr>
+                <!-- Continue adding more rows as needed -->
+            </tbody>
+        </table>
+    </div>
+    <div class="card-footer border-0 py-5">
+        <span class="text-muted text-sm">Showing 2 items out of 50 results found</span>
+    </div>
+</div>
+
+          </main>
+      </div>
+  </div>
+    
+    
+    
+  
+  
+  
+  </body></html>

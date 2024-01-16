@@ -1,0 +1,171 @@
+.bg-images {
+  text-align: center;
+}
+.bg-images img {
+  width: 800px;
+  object-fit: cover;
+}
+.bg-images {
+  background-color: #f3f3f3;
+}
+.centered {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.main-head-of-products {
+  color: black;
+  padding-top: 100px;
+  text-align: center;
+}
+.colored-word {
+  color: #16bae3;
+}
+.colored-word-bigger-size {
+  color: #18e8e8;
+  font-size: 35px;
+}
+.bigletter {
+  font-size: 80px;
+}
+.header-categories {
+  text-align: center;
+  padding-top: 200px;
+  font-size: 23px;
+  color: black;
+}
+.info-of-head {
+  text-align: center;
+}
+.products-hr {
+  border: 1px solid black;
+  width: 100%;
+}
+.kurti,
+.western,
+.heels,
+.g-shoes,
+.shirts,
+.shoes,
+.joggers,
+.jeans {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 20px;
+  padding-left: 50px;
+}
+@media screen and (max-width: 974px) {
+  .kurti,
+  .western,
+  .heels,
+  .g-shoes,
+  .shirts,
+  .shoes,
+  .joggers,
+  .jeans {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+}
+.btn-of-img {
+  border: none;
+  position: absolute;
+}
+.sry-msg {
+  color: black;
+  text-align: center;
+  padding-bottom: 20px;
+}
+
+.cart-details {
+  padding-left: 50px;
+}
+.cart-details li {
+  list-style-type: decimal;
+}
+.head-of-cart {
+  color: #f84258;
+}
+.hr-of-cart-head {
+  border: 1px solid black;
+  width: 120px;
+}
+.msg-ps {
+  color: black;
+}
+.last-hr-of-product {
+  border: 1px solid black;
+  width: 70%;
+}
+.btn-clear-list {
+  width: 100px;
+  height: 40px;
+  cursor: pointer;
+  transition: 0.2s;
+  background: none;
+  border: none;
+}
+.btn-clear-list:hover {
+  background-color: #ece3e3;
+}
+.ul_pr li {
+  font-size: 18px;
+}
+img {
+  cursor: pointer;
+}
+
+/* Extras */
+.product-card {
+  width: 220px;
+  /* border: 1px solid #ddd; */
+  padding: 10px;
+  /* box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); */
+  margin-bottom: 18px;
+}
+
+.product-image {
+  width: 100%;
+  height: auto;
+  display: block;
+  margin-bottom: 10px;
+}
+
+.brand-name {
+  font-size: 16px;
+  font-weight: bolder;
+  /* margin: 5px; */
+  color: black;
+  padding-left: 2px;
+}
+
+.product-name {
+  font-size: 12px;
+  color: #555;
+  margin: 0 0;
+  padding-top: 0px;
+  padding-left: 2px;
+  font-weight: bold;
+}
+
+.product-price {
+  font-size: 14px;
+  color: #4caf50;
+  font-weight: 900;
+  margin: 0 0;
+  padding-top: 5px;
+  padding-left: 0;
+}
+
+.original-price {
+  text-decoration: line-through;
+  color: #000000;
+  font-size: 12px;
+  margin-left: 0px;
+}
+
+.discount {
+  color: #e4913d;
+  font-size: 12px;
+}

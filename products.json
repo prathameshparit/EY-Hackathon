@@ -1,0 +1,105 @@
+{
+  "kurtis": [
+    {
+      "id": "1",
+      "name": "kurti1.png",
+      "brand": "AKS",
+      "price": "1000",
+      "discount": "40",
+      "orig_price": "2500"
+    },
+    {
+      "id": "2",
+      "name": "kurti2.png",
+      "brand": "Nayo",
+      "price": "1200",
+      "discount": "30",
+      "orig_price": "3000"
+    },
+    {
+      "id": "3",
+      "name": "kurti3.png",
+      "brand": "FabIndia",
+      "price": "1500",
+      "discount": "20",
+      "orig_price": "4000"
+    },
+    {
+      "id": "4",
+      "name": "kurti4.png",
+      "brand": "Biba",
+      "price": "1800",
+      "discount": "10",
+      "orig_price": "4800"
+    }
+  ],
+
+  "western": [
+    {
+      "id": "5",
+      "name": "western1.png",
+      "brand": "Ives Solid Shirt Style Top",
+      "price": "549",
+      "discount": "15",
+      "orig_price": "1400"
+    },
+    {
+      "id": "2",
+      "name": "western2.png",
+      "brand": "Style Quotient Solid Top",
+      "price": "554",
+      "discount": "10",
+      "orig_price": "1200"
+    },
+    {
+      "id": "3",
+      "name": "western3.png",
+      "brand": "HERE&NOW Printed A-Line Top",
+      "price": "549",
+      "discount": "20",
+      "orig_price": "1600"
+    },
+    {
+      "id": "4",
+      "name": "western4.png",
+      "brand": "SASSAFRAS Ruffled Shirt Style Top",
+      "price": "549",
+      "discount": "25",
+      "orig_price": "1300"
+    }
+  ],
+  "g_shoes": [
+    {
+      "id": "5",
+      "name": "g-shoe1.png",
+      "brand": "PUMA Women LQDCell",
+      "price": "6999",
+      "discount": "5",
+      "orig_price": "10000"
+    },
+    {
+      "id": "6",
+      "name": "g-shoe2.png",
+      "brand": "ADIDAS Women Ultraboost19 Running",
+      "price": "11899",
+      "discount": "15",
+      "orig_price": "15500"
+    },
+    {
+      "id": "7",
+      "name": "g-shoe3.png",
+      "brand": "HRX Women Absolute Run",
+      "price": "1549",
+      "discount": "10",
+      "orig_price": "3000"
+    },
+    {
+      "id": "8",
+      "name": "g-shoe4.png",
+      "brand": "Skechers Women GO RUN",
+      "price": "3249",
+      "discount": "12",
+      "orig_price": "4800"
+    }
+  ]
+}

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order List</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='invertory_order_data_styles.css') }}">
+</head>
+<body>
+    <h1>Order Details</h1>
+    <!-- <a href="./add_order">add order</a> -->
+    <table>
+        <thead>
+          <tr>
+            <th>Order ID</th>
+            <th>Product Image</th>
+            <th class="product-name-column">Product Name</th>
+            <th>Customer Name</th>
+            <th>Price</th>
+            <th>Quantity</th>
+            <th>Category</th>
+            <th>Timestamp</th>
+            <th class="address-column">Address</th>
+            <th class="phone-column">Phone</th>
+            <th>Gmail</th>
+            <th>Payment</th>
+          </tr>
+        </thead>
+
+        <tbody>
+        {% for order in orders %}
+            <!-- <li>
+                <strong>Order ID:</strong> {{ order.id }}<br>
+                <strong>Product Name:</strong> {{ order.product_name }}<br>
+                <strong>Customer Name:</strong> {{ order.customer_name }}<br>
+                <strong>Price:</strong> ${{ order.price }}<br>
+                <strong>Quantity:</strong> {{ order.quantity }}<br>
+                <strong>Category:</strong> {{ order.category }}<br>
+                <strong>Timestamp:</strong> {{ order.timestamp }}<br>
+                <strong>Address:</strong> {{ order.address }}<br>
+                <strong>Phone:</strong> {{ order.phone }}<br>
+                <strong>Email:</strong> {{ order.email }}<br>
+                <strong>Payment:</strong> {{ order.payment }}<br>
+                <strong>Product Description:</strong> {{ order.product_description }}
+                <hr>
+            </li> -->
+
+            <tr onclick="window.location='{{ url_for('product_details', product_id=order.id) }}';" style="cursor: pointer;">
+                <td>{{ order.id }}</td>
+                <td><img src="{{ order.product_image }}" alt="Product Image"></td>
+                <td>{{ order.product_name }}</td>
+                <td>{{ order.customer_name }}</td>
+                <td>{{ order.price }} Rs</td>
+                <td>{{ order.quantity }}</td>
+                <td>{{ order.category }}</td>
+                <td>{{ order.timestamp }}</td>
+                <td>{{ order.address }}</td>
+                <td>{{ order.phone }}</td>
+                <td>{{ order.email }}</td>
+                <td>{{ order.payment }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>

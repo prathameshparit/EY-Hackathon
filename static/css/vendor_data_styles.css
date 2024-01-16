@@ -1,0 +1,53 @@
+body {
+    font-family: Arial, sans-serif;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+    margin-top: 20px;
+    /* margin-left: 4px; */
+    margin-right: 8px;
+}
+
+h1 {
+    color: #008cba;
+    text-align: center;
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+th {
+    background-color: #073d6c;
+    color: white;
+}
+
+td img {
+    width: 70px;
+    height: 70px;
+    object-fit: cover;
+    display: block;
+    margin: 0 auto;
+    border-radius: 50%;
+}
+
+.product-name-column {
+    width: 20%; /* Set the width of the Product Name column */
+}
+
+.address-column{
+    width: 16%;
+}
+
+.phone-column{
+    width: 8%;
+}
+
+tr:hover {
+    background-color: #e0f2fe;
+    transition: background-color 0.3s;
+}

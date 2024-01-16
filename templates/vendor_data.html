@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inventory List</title>
+
+    <link rel="stylesheet" href="/static/css/vendor_data_styles.css">
+</head>
+<body>
+    <h1>Vendor Details</h1>
+    <table>
+        <thead>
+          <tr>
+            <th>Vendor Image</th>
+            <th class="product-name-column">Vendor Name</th>
+            <th>Order ID</th>
+            <th>Days to Deliver</th>
+            <th>Quality Rating</th>
+            <th>Pricing Rating</th>
+            <th>Customer Rating</th>
+            <th>Transaction Amount</th>
+            <th>Production Capacity</th>
+            <th>Defect Rate</th>
+            <th>Inventory Turnover</th>
+            <th>Risk Score</th>
+            <th>Feasibility</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        {% for item in data %}
+            <tr>
+                <td><img src="{{ item.vendor_image }}" alt="Vendor Image"></td>
+                <td>{{ item.vendor_name }}</td>
+                <td>{{ item.Order_id }}</td>
+                <td>{{ item.Delivery_no_of_days }}</td>
+                <td>{{ item.Product_Quality_Rating }}</td>
+                <td>{{ item.Pricing_Rating }}</td>
+                <td>{{ item.Customer_Rating }}</td>
+                <td>{{ item.Transaction_amount }}</td>
+                <td>{{ item.Production_Capacity }}</td>
+                <td>{{ item.Defect_Rate }}</td>
+                <td>{{ item.Inventory_Turnover }}</td>
+                <td>{{ item.Risk_score }}</td>
+                <td><img src="../static/images/{{ item.Risk_score }}.jpg" alt="Feasibility Image"></td>
+              </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>

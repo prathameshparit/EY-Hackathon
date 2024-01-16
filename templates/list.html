@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inventory List</title>
+
+    <link rel="stylesheet" href="/static/css/IM_styles.css">
+</head>
+<body>
+    <h1>Inventory Details</h1>
+    <a href="./IM_products">home</a>
+    <!-- <a href="./add_order">add order</a> -->
+    <table>
+        <thead>
+          <tr>
+            <th>Product ID</th>
+            <th class="product-name-column">Product Name</th>
+            <th>Buying Price</th>
+            <th>Selling Price</th>
+            <th>Bought Quantity</th>
+            <th>Stock Left</th>
+            <th>Rate of Returns</th>
+            <th>Shelf Life</th>
+            <th>Turnover Rate</th>
+            <th>Supplier Lead Time</th>
+            <th>Transportation Cost</th>
+            <th>Previous Restock Time</th>
+          </tr>
+        </thead>
+
+        <tbody>
+        {% for item in data %}
+            
+
+            <tr>
+                <td>{{ item.id }}</td>
+                <td>{{ item.product_name }}</td>
+                <td>{{ item.buying_price }} Rs</td>
+                <td>{{ item.selling_price }} Rs</td>
+                <td>{{ item.bought_quantity }}</td>
+                <td>{{ item.current_quantity }}</td>
+                <td>{{ item.rate_of_returns }}</td>
+                <td>{{ item.shelf_life }}</td>
+                <td>{{ item.turnover_rate }}</td>
+                <td>{{ item.supplier_lead_time }}</td>
+                <td>{{ item.transportation_cost }}</td>
+                <td>{{ item.previous_restock_time }}</td>
+              </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>

@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Products</title>
+    <link href="https://fonts.googleapis.com/css?family=Lora:400,700|Montserrat:300" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Chivo:300,700|Playfair+Display:700i" rel="stylesheet">
+    <link rel="stylesheet" href="static/css/style_index.css">
+    <link rel="stylesheet" href="static/css/categories.css">
+    <link rel="stylesheet" href="static/css/products.css">
+    <link rel="stylesheet" href="static/css/nav.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <head>
+  <body>
+    <!-- navbar -->
+      <nav> 
+        <div class="logo">
+          <h3><a href="merlin.html" class="logo-name">Janpath Fashion</a></h3>
+        </div>
+
+        <ul class="nav-links">
+          <li><a href="/landing_page">Home</a></li>
+          <li><a href="/products" onclick="showPrompt()">Products</a></li>
+          <li><a href="categories.html">Categories</a></li>
+          <li><a href="contact.html">ContactUs</a></li>
+          <li><a href="login.html" id="login">Login</a></li>
+        </ul>
+        <div class="burger">
+          <div class="line1"></div>
+          <div class="line2"></div>
+          <div class="line3"></div>
+        </div>
+      </nav>
+    <!-- navbar -->
+      <h2 class="main-head-of-products">Everyone Has A Style Statment<br>
+        <span class="colored-word-bigger-size">FIND YOURS HERE!</span>
+      </h2>
+
+      <br>
+      <div class="bg-images">
+        <a href="products.html"><img src="static/images/products-img/marcus-loke-xXJ6utyoSw0-unsplash (1).jpg" alt=""></a>
+      </div>
+
+      <center><p class="msg-ps">
+        <span class="colored-word">Click</span> on the product to add in your shopping list.
+        <br>Go below and check <span class="colored-word">YOUR CART</span> for details.
+      </p></center>
+
+      <div>
+        <h1>For <span class="colored-word">Her</span></h1>
+        <center><hr class="products-hr"></center>
+        <br><br>
+        <!-- <div style="align-items: center; justify-content:center"><h5 style="color: black;align-items: center; justify-content:center">Simulator</h5></div> -->
+        <!-- Display the form -->
+        <form method="POST" style="max-width: 600px; margin: 40px auto; padding: 30px; border-radius: 8px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); background-color: #ffffff; font-family: Arial, sans-serif;">
+          {{ form.hidden_tag() }}
+          <!-- Month Index Field -->
+          <div style="margin-bottom: 25px;">
+              <label style="display: block; margin-bottom: 10px; font-weight: bold; font-size: 16px;">{{ form.month_index.label }}</label>
+              <div style="border: 1px solid #ccc; border-radius: 5px; overflow: hidden;">
+                  <select name="{{ form.month_index.name }}" style="width: 100%; padding: 10px; border: none; outline: none; background-color: #f9f9f9;">
+                      {% for value, label in form.month_index.choices %}
+                      <option value="{{ value }}">{{ label }}</option>
+                      {% endfor %}
+                  </select>
+              </div>
+          </div>
+          
+          <!-- Market Trend Field -->
+          <div style="margin-bottom: 25px;">
+              <label style="display: block; margin-bottom: 10px; font-weight: bold; font-size: 16px;">{{ form.market_trend.label }}</label>
+              <div style="border: 1px solid #ccc; border-radius: 5px; overflow: hidden;">
+                  <select name="{{ form.market_trend.name }}" style="width: 100%; padding: 10px; border: none; outline: none; background-color: #f9f9f9;">
+                      {% for value, label in form.market_trend.choices %}
+                      <option value="{{ value }}">{{ label }}</option>
+                      {% endfor %}
+                  </select>
+              </div>
+          </div>
+          
+          <!-- Competitor Pricing Field -->
+          <div style="margin-bottom: 25px;">
+              <label style="display: block; margin-bottom: 10px; font-weight: bold; font-size: 16px;">{{ form.competitor_pricing.label }}</label>
+              <div style="border: 1px solid #ccc; border-radius: 5px; overflow: hidden;">
+                  <select name="{{ form.competitor_pricing.name }}" style="width: 100%; padding: 10px; border: none; outline: none; background-color: #f9f9f9;">
+                      {% for value, label in form.competitor_pricing.choices %}
+                      <option value="{{ value }}">{{ label }}</option>
+                      {% endfor %}
+                  </select>
+              </div>
+          </div>
+          
+          <!-- Supply Demand Field -->
+          <div style="margin-bottom: 25px;">
+              <label style="display: block; margin-bottom: 10px; font-weight: bold; font-size: 16px;">{{ form.supply_demand.label }}</label>
+              <div style="border: 1px solid #ccc; border-radius: 5px; overflow: hidden;">
+                  <select name="{{ form.supply_demand.name }}" style="width: 100%; padding: 10px; border: none; outline: none; background-color: #f9f9f9;">
+                      {% for value, label in form.supply_demand.choices %}
+                      <option value="{{ value }}">{{ label }}</option>
+                      {% endfor %}
+                  </select>
+              </div>
+          </div>
+      
+          <!-- Submit Button -->
+          <div style="text-align: center; margin-top: 30px;">
+              <button type="submit" style="background-color: #26d3d3; color: white; padding: 12px 20px; border: none; border-radius: 25px; cursor: pointer; font-size: 16px; transition: background-color 0.3s, transform 0.3s; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
+                  Submit
+              </button>
+          </div>
+      </form>
+      
+
+      
+
+        <div class="kurti">
+          <!-- <img src="static/images/products-img/women/kurti1.png" id="AKS  Kurta with Plazzzo & Dupatta || Rs. {{price}}" onclick="add(this.id)"> -->
+            {% for category, products_list in products.items() %}
+                {% for product_details in products_list %}
+                    <div class="product-card">
+                        <img src="static/images/products-img/women/{{ product_details['name'] }}" alt="{{ product_details['brand'] }} Women {{ category }}" class="product-image">
+                        <div class="product-info">
+                            <h2 class="brand-name">{{ product_details['brand'] }}</h2>
+                            <p class="product-name">{{ category.capitalize() }} - {{ product_details['name'] }}</p>
+                            <p class="product-price">
+                                Rs. {{ product_details['price'] | int }}
+                                <span class="original-price">
+                                    Rs. {{ product_details['orig_price'] }}
+                                </span>
+                                (<span class="discount">{{ product_details['discount'] }}% OFF</span>)
+                            </p>
+                        </div>
+                    </div>
+                {% endfor %}
+            {% endfor %}
+        </div> 
+
+
+        <div class="western">
+          <!-- <img src="static/images/products-img/women/western1.png"  id="Ives Solid Shirt Style Top || Rs.549" alt="" onclick="add(this.id)">
+          <img src="static/images/products-img/women/western2.png"  id="Style Quotient Solid Top || Rs.554" alt="" onclick="add(this.id)">
+          <img src="static/images/products-img/women/western3.png"  id="HERE&NOW Printed A-Line Top || Rs.549" alt="" onclick="add(this.id)">
+          <img src="static/images/products-img/women/western4.png"  id="SASSAFRAS Ruffled Shirt Style Top || Rs. 549" alt="" onclick="add(this.id)"> -->
+        </div>
+        <div class="g-shoes">
+          <!-- <img src="static/images/products-img/women/g-shoe1.png"  id=" PUMA Women LQDCell || Rs.6999" alt="" onclick="add(this.id)">
+          <img src="static/images/products-img/women/g-shoe2.png"  id="ADIDAS Women Ultraboost19 Running || Rs.11899" alt="" onclick="add(this.id)">
+          <img src="static/images/products-img/women/g-shoe3.png"  id="HRX Womwn Abslute Run  || Rs.1549" alt="" onclick="add(this.id)">
+          <img src="static/images/products-img/women/g-shoe4.png"  id="Skercher Women GO RUN  || Rs.3249" alt="" onclick="add(this.id)"> -->
+        </div>
+        <div class="heels">
+          <!-- <img src="static/images/products-img/women/heels1.png"  id="Shetopia Women Heels || Rs.499" alt="" onclick="add(this.id)">
+          <img src="static/images/products-img/women/heels2.png"  id="ZAPATOZ Women Heeled Boots || Rs.527" alt="" onclick="add(this.id)">
+          <img src="static/images/products-img/women/heels3.png"  id="Allen Solly Women Solid Wedged || Rs.2499" alt="" onclick="add(this.id)">
+          <img src="static/images/products-img/women/heels4.png"  id="Shoetopia Women Heels || Rs.499" alt="" onclick="add(this.id)"> -->
+        </div>
+
+        <h1>For <span class="colored-word">Him</span></h1>
+        <center><hr class="products-hr"></center>
+        <br><br>
+
+        <div class="shirts">
+          <img src="static/images/products-img/men/shirt1.png"  id="Difference of Opinion Printed Shirt || Rs.449" alt="" onclick="add(this.id)">
+          <img src="static/images/products-img/men/shirt2.png"  id="Moda Rapido Printed Round Neck T-shirt || Rs.486" alt="" onclick="add(this.id)">
+          <img src="static/images/products-img/men/shirt3.png"  id="DILLINGER Colourblocked Round Neck T-shirt || Rs.404" alt="" onclick="add(this.id)">
+          <img src="static/images/products-img/men/shirt4.png"  id="Roadster T-shirt with Shoulder patch || Rs.519" alt="" onclick="add(this.id)">
+        </div>
+        <div class="jeans">
+          <img src="static/images/products-img/men/jeans1.png"  id="HIGHLANDER Men Slim Fit Jeans || Rs.874" alt="" onclick="add(this.id)">
+          <img src="static/images/products-img/men/jeans2.png"  id="Roadster Men Super Skinny Fit Jeans || Rs.1199" alt="" onclick="add(this.id)">
+          <img src="static/images/products-img/men/jeans3.png"  id="Calvin Klein Jeans Mean Slim Straight Jeans || Rs.9599" alt="" onclick="add(this.id)">
+          <img src="static/images/products-img/men/jeans4.png"  id="LOCOMOTIVE Mean Slim Fit Jeans || Rs.999" alt="" onclick="add(this.id)">
+        </div>
+        <div class="joggers">
+          <img src="static/images/products-img/men/joggers1.png"  id="HRX Men Solid Joggers || Rs.934" alt="" onclick="add(this.id)">
+          <img src="static/images/products-img/men/joggers1.png"  id="HRX Men Solid Joggers || Rs.934" alt="" onclick="add(this.id)">
+          <img src="static/images/products-img/men/joggers1.png"  id="HRX Men Solid Joggers || Rs.934" alt="" onclick="add(this.id)">
+          <img src="static/images/products-img/men/joggers1.png"  id="HRX Men Solid Joggers || Rs.934" alt="" onclick="add(this.id)">
+        </div>
+        <div class="shoes">
+          <img src="static/images/products-img/men/shoe1.png"  id="PUMA Men Clasp IDP Sneakers || Rs.1304" alt="" onclick="add(this.id)">
+          <img src="static/images/products-img/men/shoe2.png"  id="Levis Men Sneakers || Rs.1169" alt="" onclick="add(this.id)">
+          <img src="static/images/products-img/men/shoe3.png"  id="Mactree Men Sneakers || Rs.679" alt="" onclick="add(this.id)">
+          <img src="static/images/products-img/men/shoe4.png"  id="HRX Men Pro Sneakers || Rs.1699" alt="" onclick="add(this.id)">
+        </div><br>
+
+        <h4 class="sry-msg">Uh-Oh! We are<span class="colored-word"> done</span>🛒</h4>
+        <center><hr class="last-hr-of-product"></center>
+        <br><br>
+
+        <div class="cart-details">
+          <h2 class="head-of-cart">Your Cart</h2>
+            <hr class="hr-of-cart-head">
+            <br>
+          <ul id="ul_pr">
+            
+          </ul>
+        <button class="btn-clear-list" onclick="emptyList()"> <span class="colored-word"> Clear My List</span></button> <br>
+          <small>Can't see anything? Click & add your favorite fashion in
+          <span class="colored-word"> Shopping List!</span> </small>
+        </div>
+        <br><br><br>
+      </div>
+      
+    <script src="static/js/nav.js"></script>
+    <script src="static/js/products.js"></script>
+  </body>
+</html>

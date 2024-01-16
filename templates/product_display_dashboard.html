@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+    <meta charset="UTF-8">
+    
+  
+      <link rel="apple-touch-icon" type="image/png" href="https://cpwebassets.codepen.io/assets/favicon/apple-touch-icon-5ae1a0698dcc2402e9712f7d01ed509a57814f994c660df9f7a952f3060705ee.png">
+  
+      <meta name="apple-mobile-web-app-title" content="CodePen">
+  
+      <link rel="shortcut icon" type="image/x-icon" href="https://cpwebassets.codepen.io/assets/favicon/favicon-aec34940fbc1a6e787974dcd360f2c6b63348d4b1f4e06c77743096d55480f33.ico">
+  
+      <link rel="mask-icon" type="image/x-icon" href="https://cpwebassets.codepen.io/assets/favicon/logo-pin-b4b4269c16397ad2f0f7a01bcdf513a1994f4c94b8af2f191c09eb0d601762b1.svg" color="#111">
+  
+      <link href="https://cdn.jsdelivr.net/npm/apexcharts@latest/dist/apexcharts.css" rel="stylesheet">
+
+      <!-- External Libraries -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.anychart.com/releases/8.11.0/js/anychart-core.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/8.11.0/js/anychart-treemap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+    <script src="http://d3js.org/d3.v3.min.js"></script>
+    <script src="http://d3js.org/topojson.v1.min.js"></script>
+    <script src="https://rawgit.com/Anujarya300/bubble_maps/master/data/geography-data/datamaps.none.js"></script>
+
+    <!-- Styles -->
+    <style type="text/css">
+        .container-fluid {
+            padding: 20px;
+            font-family: Arial, sans-serif;
+        }
+
+        #treemap {
+            width: 100%;
+            height: 600px;
+        }
+    </style>
+
+  
+    
+    
+  
+    <title>Product Line Demand</title>
+  
+      <link rel="canonical" href="https://codepen.io/Md-Hedayet-Ullah/pen/OJqJWqo">
+    
+    
+    
+    
+  <style>
+  /* Webpixels CSS */
+  /* Utility and component-centric Design System based on Bootstrap for fast, responsive UI development */
+  /* URL: https://github.com/webpixels/css */
+  
+  @import url(https://unpkg.com/@webpixels/css@1.1.5/dist/index.css);
+  
+  /* Bootstrap Icons */
+  @import url("https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.4.0/font/bootstrap-icons.min.css");
+
+  
+  </style>
+  
+    <script>
+    window.console = window.console || function(t) {};
+    
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+    
+    
+  </head>
+  
+  <body translate="no" class="vsc-initialized">
+  
+  <!-- Dashboard -->
+  <div class="d-flex flex-column flex-lg-row h-lg-full bg-surface-secondary">
+      <!-- Vertical Navbar -->
+      <nav class="navbar show navbar-vertical h-lg-screen navbar-expand-lg px-0 py-3 navbar-light bg-white border-bottom border-bottom-lg-0 border-end-lg" id="navbarVertical">
+          <div class="container-fluid">
+              <!-- Toggler -->
+              <button class="navbar-toggler ms-n2" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarCollapse" aria-controls="sidebarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon"></span>
+              </button>
+              <!-- Brand -->
+              <a class="navbar-brand py-lg-2 mb-lg-5 px-lg-6 me-0" href="#">
+                  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/34/EY_logo_2019.svg/1200px-EY_logo_2019.svg.png" alt="...">
+              </a>
+              <!-- User menu (mobile) -->
+              <div class="navbar-user d-lg-none">
+                  <!-- Dropdown -->
+                  <div class="dropdown">
+                      <!-- Toggle -->
+                      <a href="#" id="sidebarAvatar" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          <div class="avatar-parent-child">
+                              <img alt="Image Placeholder" src="https://images.unsplash.com/photo-1548142813-c348350df52b?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=facearea&amp;facepad=3&amp;w=256&amp;h=256&amp;q=80" class="avatar avatar- rounded-circle">
+                              <span class="avatar-child avatar-badge bg-success"></span>
+                          </div>
+                      </a>
+                      <!-- Menu -->
+                      <div class="dropdown-menu dropdown-menu-end" aria-labelledby="sidebarAvatar">
+                          <a href="#" class="dropdown-item">Profile</a>
+                          <a href="#" class="dropdown-item">Settings</a>
+                          <a href="#" class="dropdown-item">Billing</a>
+                          <hr class="dropdown-divider">
+                          <a href="#" class="dropdown-item">Logout</a>
+                      </div>
+                  </div>
+              </div>
+              <!-- Collapse -->
+              <div class="collapse navbar-collapse" id="sidebarCollapse">
+                  <!-- Navigation -->
+                  <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/">
+                            <i class="bi bi-house-door"></i> Dashboard
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/product_display_dashboard">
+                            <i class="bi bi-graph-up"></i> Product Line Demand
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/inventory_management_dashboard">
+                            <i class="bi bi-archive"></i> Inventory Management
+                            <span class="badge bg-primary rounded-pill d-inline-flex align-items-center ms-auto">6</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/IM_products">
+                            <i class="bi bi-calendar-check"></i> Inventory Forecast
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/inventory_order_data">
+                            <i class="bi bi-box-seam"></i> Inventory Stock Details
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/vendor_risk_data">
+                            <i class="bi bi-shield-exclamation"></i> Vendors Risk Forecast
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/landing_page">
+                            <i class="bi bi-lightning-charge-fill"></i> Dynamic Pricing
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="http://localhost:8501/" target="_blank">
+                            <i class="bi bi-star"></i> Fashion Recommender System
+                        </a>
+                    </li>
+                </ul>
+                
+                  <!-- Divider -->
+                  <hr class="navbar-divider my-5 opacity-20">
+                  <!-- Navigation -->
+                  <ul class="navbar-nav mb-md-4">
+                      <li>
+                          <div class="nav-link text-xs font-semibold text-uppercase text-muted ls-wide" href="#">
+                              Vendor Contacts
+                              <span class="badge bg-soft-primary text-primary rounded-pill d-inline-flex align-items-center ms-4">13</span>
+                          </div>
+                      </li>
+                      <li>
+                          <a href="#" class="nav-link d-flex align-items-center">
+                              <div class="me-4">
+                                  <div class="position-relative d-inline-block text-white">
+                                      <img alt="Image Placeholder" src="https://i.pinimg.com/736x/5d/a8/76/5da8768c07eb3db7dbf5f394ab4444a6.jpg" class="avatar rounded-circle">
+                                      <span class="position-absolute bottom-2 end-2 transform translate-x-1/2 translate-y-1/2 border-2 border-solid border-current w-3 h-3 bg-success rounded-circle"></span>
+                                  </div>
+                              </div>
+                              <div>
+                                  <span class="d-block text-sm font-semibold">
+                                      Ramlal Yadav
+                                  </span>
+                                  <span class="d-block text-xs text-muted font-regular">
+                                      Bihar, UP
+                                  </span>
+                              </div>
+                              <div class="ms-auto">
+                                  <i class="bi bi-chat"></i>
+                              </div>
+                          </a>
+                      </li>
+                      <li>
+                          <a href="#" class="nav-link d-flex align-items-center">
+                              <div class="me-4">
+                                <div class="position-relative d-inline-block text-white">
+                                    <img alt="..." src="https://static.vecteezy.com/system/resources/previews/031/725/956/large_2x/ai-generated-studio-portrait-of-handsome-indian-man-on-colour-background-photo.jpg" class="avatar rounded-circle">
+                                    <span class="position-absolute bottom-2 end-2 transform translate-x-1/2 translate-y-1/2 border-2 border-solid border-current w-3 h-3 bg-danger rounded-circle"></span>
+                                </div>
+                              </div>
+                              <div>
+                                  <span class="d-block text-sm font-semibold">
+                                      RadhaKrishna Kumar
+                                  </span>
+                                  <span class="d-block text-xs text-muted font-regular">
+                                      ChandniChowk, Delhi
+                                  </span>
+                              </div>
+                              <div class="ms-auto">
+                                  <i class="bi bi-chat"></i>
+                              </div>
+                          </a>
+                      </li>
+                      <li>
+                          <a href="#" class="nav-link d-flex align-items-center">
+                              <div class="me-4">
+                                  <div class="position-relative d-inline-block text-white">
+                                      <img alt="..." src="https://i.pinimg.com/736x/c8/b2/76/c8b276ea169aecb66cd0b7e6ad114274.jpg" class="avatar rounded-circle">
+                                      <span class="position-absolute bottom-2 end-2 transform translate-x-1/2 translate-y-1/2 border-2 border-solid border-current w-3 h-3 bg-danger rounded-circle"></span>
+                                  </div>
+                              </div>
+                              <div>
+                                  <span class="d-block text-sm font-semibold">
+                                      Hrushikesh Kachgunde
+                                  </span>
+                                  <span class="d-block text-xs text-muted font-regular">
+                                      Aurangabad
+                                  </span>
+                              </div>
+                              <div class="ms-auto">
+                                  <i class="bi bi-chat"></i>
+                              </div>
+                          </a>
+                      </li>
+                  </ul>
+                  <!-- Push content down -->
+                  <div class="mt-auto"></div>
+                  <!-- User (md) -->
+                  <ul class="navbar-nav">
+                      <li class="nav-item">
+                          <a class="nav-link" href="#">
+                              <i class="bi bi-person-square"></i> Account
+                          </a>
+                      </li>
+                      <li class="nav-item">
+                          <a class="nav-link" href="#">
+                              <i class="bi bi-box-arrow-left"></i> Logout
+                          </a>
+                      </li>
+                  </ul>
+              </div>
+          </div>
+      </nav>
+      <!-- Main content -->
+      <div class="h-screen flex-grow-1 overflow-y-lg-auto">
+          <!-- Header -->
+          <header class="bg-surface-primary border-bottom pt-6">
+              <div class="container-fluid">
+                  <div class="mb-npx">
+                      <div class="row align-items-center">
+                          <div class="col-sm-6 col-12 mb-4 mb-sm-0">
+                              <!-- Title -->
+                              <h1 class="h2 mb-0 ls-tight">Product Line Demand</h1>
+                          </div>
+                          
+                  </div>
+              </div>
+          </header>
+
+          
+          <!-- Main -->
+<main class="py-6 bg-surface-secondary">
+    <div class="container-fluid">
+        <!-- Clothing Sales -->
+        <div class="clothing-sales">
+            <h2>Clothing Sales</h2>
+            
+            <!-- Men's Clothing -->
+            <div class="mens-clothing">
+                <h3>Men's Clothing</h3>
+                <div class="row g-6 mb-6" id="mensClothingRow">
+                    <!-- Men's Clothing items will be dynamically inserted here -->
+                </div>
+            </div>
+            
+            <!-- Women's Clothing -->
+            <div class="womens-clothing">
+                <h3>Women's Clothing</h3>
+                <div class="row g-6 mb-6" id="womensClothingRow">
+                    <!-- Women's Clothing items will be dynamically inserted here -->
+                </div>
+            </div>
+            
+            <!-- Children's Clothing -->
+            <div class="childrens-clothing">
+                <h3>Children's Clothing</h3>
+                <div class="row g-6 mb-6" id="childrensClothingRow">
+                    <!-- Children's Clothing items will be dynamically inserted here -->
+                </div>
+            </div>
+
+<!-- Radar Chart Popup -->
+<div id="radarChartPopup" class="radar-chart-popup" style="display: none;">
+    <h2 id="productName"></h2>
+    <div id="radarChartContainer" class="chart-container"></div>
+    <!-- Add this container inside your radarChartPopup div -->
+<div id="lineChartContainer"class="chart-container"></div>
+
+    <button class="close-btn" onclick="hideRadarChartPopup()">Close</button>
+</div>
+
+
+<style>
+/* Radar Chart Popup */
+.radar-chart-popup {
+    position: fixed;
+    width: 400px; /* Adjust the width based on your preference */
+    background-color: #ffffff;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    display: none;
+}
+
+.radar-chart-popup h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.radar-chart-popup-content {
+    display: flex;
+    justify-content: space-between;
+}
+
+.chart-container {
+    flex: 1;
+    margin-right: 20px;
+}
+
+.close-btn {
+    background-color: #00d0ff;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.close-btn:hover {
+    background-color: #0008ff;
+}
+
+
+</style>
+</main>
+
+<style>
+
+    /* Fixed height for product cards */
+.card {
+    height: 450px; /* You can adjust this value as per your requirement */
+    overflow: hidden; /* This will hide any overflowing content */
+}
+
+.card-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%; /* Ensures that the card-body takes up full height */
+}
+
+.card-body img {
+    max-height: 350px; /* Adjust as per your design preference */
+    width: auto;
+    object-fit: cover; /* This ensures the image covers the allotted space */
+}
+
+
+</style>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+
+
+
+    // Sample clothing sales data
+    const clothingSalesData = [
+    {
+        name: "Men's Clothing",
+        children: [
+            { name: "Shirts", value: "₹50000", image: "https://rukminim2.flixcart.com/image/850/1000/xif0q/shirt/8/x/n/s-st27-vebnor-original-imagpgs4aheazzqc.jpeg?q=90" },
+            { name: "Trousers", value: "₹40000", image: "https://imagescdn.planetfashion.in/img/app/product/7/790594-9255248.jpg?auto=format&w=494.40000000000003" },
+            { name: "Jackets", value: "₹45000", image: "https://m.media-amazon.com/images/W/MEDIAX_792452-T2/images/I/61ERl8U2SRL._AC_UY1100_.jpg" },
+            { name: "Suits", value: "₹60000", image: "https://happygentleman.com/wp-content/uploads/2022/08/Madrid_suit_Navy-3-picece-suit-for-men-happy-gentleman-5-400x400.webp" },
+            { name: "Hoodies", value: "₹35000", image: "https://img.ltwebstatic.com/images3_pi/2023/09/13/c3/1694588205707fa97a5266ac3275d7ac257f17f538_thumbnail_720x.jpg" },
+            { name: "Sweaters", value: "₹32000", image: "https://i5.walmartimages.com/seo/Sweaters-for-Men-s-Fashion-Winter-High-Neck-Warm-Outdoor-Long-Sleeve-Knitted-Sweater-Top-Black-L_3b340df4-399f-4201-9314-13b36a9a545f.addf25771828d6f8948f6e7f611a0950.jpeg" },
+            { name: "Jeans", value: "₹42000", image: "https://rukminim2.flixcart.com/image/850/1000/xif0q/jean/4/m/j/28-mbdfk372-073-high-star-original-imagzdusjwejf33m.jpeg?q=20" },
+            { name: "Shorts", value: "₹28000", image: "https://contents.mediadecathlon.com/p2197688/f416d39cfaa1791946caf0e90f85dd69/p2197688.jpg" },
+            { name: "Blazers", value: "₹55000", image: "https://img0.junaroad.com/uiproducts/18601513/zoom_0-1666084990.jpg" },
+            { name: "Vests", value: "₹25000", image: "https://m.media-amazon.com/images/I/61CtX9oliqL._AC_UF1000,1000_QL80_.jpg" }
+        ]
+    },
+    {
+        name: "Women's Clothing",
+        children: [
+            { name: "Dresses", value: "₹60000", image: "https://d7m3bntqen60h.cloudfront.net/2023/06/1536x1920px_RosaClaraSoft.jpg" },
+            { name: "Skirts", value: "₹35000", image: "https://imgmedia.lbb.in/media/2022/09/6322ff006a824c7ba8070c04_1663237888866.jpg" },
+            { name: "Blouses", value: "₹48000", image: "https://www.wholesaletextile.in/product-img/Patola-Cotton-Blouse-On-Trends2-1639386097.jpeg" },
+            { name: "Coats", value: "₹42000", image: "https://assets.myntassets.com/h_1440,q_100,w_1080/v1/assets/images/14230984/2021/10/13/2ac1e0c7-e860-4c49-bf7a-214beda400401634118037911-all-about-you-Women-Coats-5291634118033369-1.jpg" },
+            { name: "Leggings", value: "₹30000", image: "https://stilento.com/cdn/shop/products/rupa-churidar-black-cotton-leggings-for-woman-stilento-2.jpg?v=1662798941&width=1445" },
+            { name: "Scarves", value: "₹25000", image: "https://assets.myntassets.com/dpr_1.5,q_60,w_400,c_limit,fl_progressive/assets/images/26260128/2023/12/6/a8111066-83da-484c-be60-ed854a55374c1701803530760BUTABUTIWomenNavyBlueOrangeScarf1.jpg" },
+            { name: "Handbags", value: "₹35000", image: "https://www.fizzygoblet.com/cdn/shop/collections/blue_tote_domestic_465c478a-6dc3-470b-a5b1-48e59bd48202_1200x1200.jpg?v=1661929403" },
+            { name: "Jumpsuits", value: "₹50000", image: "https://images.meesho.com/images/products/271792816/xdcqj_512.webp" },
+            { name: "Pants", value: "₹32000", image: "https://rukminim2.flixcart.com/image/850/1000/xif0q/trouser/f/p/m/s-smpt-885b-smarty-pants-original-imagznnufyfnycah.jpeg?q=90" },
+            { name: "Tops", value: "₹28000", image: "https://binfinite.in/cdn/shop/products/AA_fe644568-8afa-4c7e-96d4-31540086c0a1_480x.jpg?v=1627572160" }
+        ]
+    },
+    {
+        name: "Children's Clothing",
+        children: [
+            { name: "T-shirts", value: "₹30000", image: "https://www.tenstickers.in/webp/t-shirts/large/spider-man-kids-t-shirt-with-name-19709.webp" },
+            { name: "Jeans", value: "₹25000", image: "https://static-01.daraz.com.bd/p/1705dcea304d1a8aae717c394881055c.jpg" },
+            { name: "Shorts", value: "₹20000", image: "https://patternemporium.com/cdn/shop/products/Honeybuns-Flat-Front-Shorts-Pockets-Girls-Kids-Sewing-Pattern-Emporium-COVER_1200x.jpg?v=1704158154" },
+            { name: "Dresses", value: "₹28000", image: "https://i.pinimg.com/236x/5a/69/31/5a693108eec44b3ea92e1ddd4d2777f3.jpg" },
+            { name: "Sweatpants", value: "₹18000", image: "https://cdn.sanity.io/images/9aj0w651/production/afd22758a32101866d5dcac67503834a41d020c2-2060x2575.jpg?w=1100&h=1375&auto=format    " },
+            { name: "Hats", value: "₹15000", image: "https://images-cdn.ubuy.co.in/63c6e08b1382c85ad53c50e3-kids-knitted-hat-beanie-cap-boys-girls.jpg" },
+            { name: "Shoes", value: "₹22000", image: "https://5.imimg.com/data5/SELLER/Default/2022/3/RH/TH/MT/149710568/kids-boys-footwear.jpg" },
+            { name: "Jackets", value: "₹32000", image: "https://5.imimg.com/data5/SELLER/Default/2021/4/VD/UD/AO/21288657/cn-jackets-21-c.png" },
+            { name: "Socks", value: "₹10000", image: "https://m.media-amazon.com/images/W/MEDIAX_792452-T2/images/I/61yQNr0QfHS._AC_UY1100_.jpg" },
+            { name: "Gloves", value: "₹8000", image: "https://runwildmychild.com/wp-content/uploads/2021/12/Veyo-Mittens-scaled.jpg" }
+        ]
+    }
+];
+
+
+   
+    // Function to generate radar chart dynamically
+    function generateRadarChart(containerId) {
+        const radarChartOptions = {
+            chart: {
+            width: 350,
+            height: 350,
+                type: 'radar',
+                toolbar: {
+                    show: false
+                }
+            },
+            series: [{
+                name: 'Metrics',
+                data: [getRandomValue(), getRandomValue(), getRandomValue(), getRandomValue(), getRandomValue()]
+            }],
+            labels: ['Impression', 'Conversion Rate', 'Purchases', 'Return Rate', 'Add to Cart Rate']
+        };
+
+        const radarChartContainer = document.getElementById(containerId);
+        const radarChart = new ApexCharts(radarChartContainer, radarChartOptions);
+        radarChart.render();
+        currentRadarChartPopup = radarChart;
+    }
+    let currentRadarChartPopup = null; // Variable to store the current radar chart popup
+// Function to show radar chart popup
+function showRadarChartPopup(productName, event) {
+    // Hide the existing radar chart popup
+    hideRadarChartPopup();
+
+    // Generate and show the new radar chart
+    generateRadarChart('radarChartContainer');
+
+    // Set product name in the popup
+    document.getElementById('productName').textContent = `Demand Stats for ${productName}`;
+
+    // Set the position of the popup relative to the clicked image
+    const radarChartPopup = document.getElementById('radarChartPopup');
+    const popupWidth = radarChartPopup.offsetWidth;
+    const popupHeight = radarChartPopup.offsetHeight;
+
+    // Calculate the left position considering screen boundaries
+    let leftPosition = event.clientX + 50;
+    if (leftPosition + popupWidth > window.innerWidth) {
+        leftPosition = window.innerWidth - popupWidth - 10;
+    }
+
+    // Calculate the top position considering screen boundaries
+    let topPosition = event.clientY;
+    if (topPosition + popupHeight > window.innerHeight) {
+        topPosition = window.innerHeight - popupHeight - 10;
+    }
+
+    radarChartPopup.style.left = `${leftPosition}px`;
+    radarChartPopup.style.top = `${topPosition}px`;
+
+    // Show the popup
+    radarChartPopup.style.display = 'block';
+}
+
+// Function to hide radar chart popup
+function hideRadarChartPopup() {
+    // Hide the existing radar chart popup
+    document.getElementById('radarChartPopup').style.display = 'none';
+
+    // Clear the chart container to remove the existing chart
+    document.getElementById('radarChartContainer').innerHTML = '';
+}
+
+
+    // Modify your generateClothingItems function to attach a click event listener
+    function generateClothingItems(containerId, items) {
+        const container = document.getElementById(containerId);
+        
+        items.forEach((item) => {
+            const colDiv = document.createElement('div');
+            colDiv.className = 'col-xl-3 col-sm-6 col-12';
+            
+            const cardDiv = document.createElement('div');
+            cardDiv.className = 'card shadow border-0';
+            
+            const cardBodyDiv = document.createElement('div');
+            cardBodyDiv.className = 'card-body text-center';
+
+            // Product Image
+            const imgElement = document.createElement('img');
+            imgElement.src = item.image;
+            imgElement.alt = item.name;
+            imgElement.className = 'img-fluid mb-3';
+            
+            // Attach click event listener to the image
+            imgElement.addEventListener('click', (event) => {
+            showRadarChartPopup(item.name, event); // Show radar chart popup on image click
+        });
+
+
+            cardBodyDiv.appendChild(imgElement);
+
+                // Product Name
+                const itemName = document.createElement('h5');
+                itemName.textContent = item.name;
+                cardBodyDiv.appendChild(itemName);
+
+                // Product Price
+                const priceElement = document.createElement('p');
+                priceElement.textContent = item.value;
+                cardBodyDiv.appendChild(priceElement);
+
+                cardDiv.appendChild(cardBodyDiv);
+            colDiv.appendChild(cardDiv);
+            
+            container.appendChild(colDiv);
+        });
+    }
+
+    // Function to get a random value between 1 and 100 for radar chart
+    function getRandomValue() {
+        return Math.floor(Math.random() * 100) + 1;
+    }
+
+        // Generate clothing items for each category
+        generateClothingItems('mensClothingRow', clothingSalesData[0].children);
+        generateClothingItems('womensClothingRow', clothingSalesData[1].children);
+        generateClothingItems('childrensClothingRow', clothingSalesData[2].children);
+    </script>
+
+          </main>
+      </div>
+  </div>
+    
+    
+    
+  
+  
+  
+  </body></html>

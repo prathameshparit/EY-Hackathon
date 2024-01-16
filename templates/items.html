@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products</title>
+
+    <link rel="stylesheet" href="/static/css/IM_styles.css">
+</head>
+
+<body>
+    <h1>Products</h1>
+    <a href="./list">List</a>
+    <div class="container">
+        {% for item in json_data %}
+        <div class="image-popup-trigger image-item" data-product-id="{{ item.id }}">
+            <img class="image" src="{{ item.product_image }}" alt="alt">
+            <div class="item_name center-text">{{ item.product_name }}</div>
+            <div class="desc center-text">Price: {{ item.selling_price }} Rs.</div>
+        </div>
+        {% endfor %}
+    </div>
+
+    <!-- Move the modal outside the loop to have a single modal element -->
+    <div class="image-modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <img src="https://t4.ftcdn.net/jpg/00/97/58/97/360_F_97589769_t45CqXyzjz0KXwoBZT9PRaWGHRk5hQqQ.jpg" alt="Modal Image" class="modal-image">
+            <p class="modal-product-name info"></p>
+            <div class="col-info-container">
+                <p class="modal-buying-price info col-info"></p>
+                <p class="modal-selling-price info col-info"></p>
+                <p class="modal-bought-quantity info col-info"></p>
+                <p class="modal-current-quantity info col-info"></p>
+                <p class="modal-rate-of-return info col-info"></p>
+                <p class="modal-shelf-life info col-info"></p>
+            </div>
+            <p class="current-id info"></p>
+        </div>
+    </div>
+
+    <script>
+        document.querySelector('.close-modal').addEventListener('click', function() {
+            document.querySelector('.image-modal').style.display = 'none';
+        });
+
+        document.addEventListener('DOMContentLoaded', function() {
+            let buyQuantity = 0;
+
+            function handleProductClick(item) {
+                return async function() {
+                    var productId = item.getAttribute('data-product-id');
+                    console.log(productId);
+
+                    const res = await fetch(`http://localhost:5000/get_product/${productId}`);
+                    const data = await res.json();
+                    console.log("data---", data[0]);
+
+                    const postData = data[0];
+                    const apiUrl = "http://127.0.0.1:5000/predict";
+
+                    fetch(apiUrl, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify(postData)
+                    })
+                    .then(function(response) {
+                        if (!response.ok) {
+                            throw new Error('Network response was not ok');
+                        }
+                        return response.json();
+                    })
+                    .then(function(data) {
+                        console.log('Data received:', data.predictions);
+
+                        buyQuantity = Math.round(data.predictions) * 15;
+
+                        document.querySelector(".modal-product-name").innerHTML = postData.product_name;
+                        document.querySelector(".modal-buying-price").innerHTML = "<span class='light-text'>Buying Price:</span> " + postData.buying_price + " Rs";
+                        document.querySelector(".modal-selling-price").innerHTML = "<span class='light-text'>Selling Price:</span> " + postData.selling_price + " Rs";
+                        document.querySelector(".modal-bought-quantity").innerHTML = "<span class='light-text'>Qty Bought:</span> " + postData.bought_quantity;
+                        document.querySelector(".modal-current-quantity").innerHTML ="<span class='light-text'>Stock left:</span> " + postData.current_quantity;
+                        document.querySelector(".modal-rate-of-return").innerHTML = "<span class='light-text'>Rate of Return:</span> " + postData.rate_of_returns;
+                        document.querySelector(".modal-shelf-life").innerHTML = "<span class='light-text'>Shelf Life:</span> " + postData.shelf_life;
+                        document.querySelector(".current-id").innerHTML = "<span class='light-text'>Extra Qty to Buy:</span> " + buyQuantity;
+                        document.querySelector(".modal-image").src = postData.product_image;
+
+                        // Show the modal
+                        document.querySelector('.image-modal').style.display = 'flex';
+                    })
+                    .catch(function(error) {
+                        console.error('Error:', error.message);
+                    });
+                };
+            }
+
+            // Attach click event listeners using the function that handles the closure issue
+            document.querySelectorAll('.image-popup-trigger').forEach(function(item) {
+                item.addEventListener('click', handleProductClick(item));
+            });
+        });
+    </script>
+    
+</body>
+</html>
